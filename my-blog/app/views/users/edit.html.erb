@@ -1,0 +1,16 @@
+<h1>Edit User "<%= @user.username %>"</h1>
+
+<%= render 'errors' %>
+
+<%= form_for @user do |f| %>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
