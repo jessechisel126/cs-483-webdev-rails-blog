@@ -1,7 +1,8 @@
 <h1>User Profile for "<%= @user.username %>"</h1>
 
 <p>
-  Password: <%= @user.password %>
+  Password: [ENCRYPTED]
 </p>
 
-<%= link_to 'Edit', edit_user_path %>
+<%= link_to 'Back', users_path %> | 
+<%= link_to 'Change Password', edit_user_path %>

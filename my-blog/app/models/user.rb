@@ -1,11 +1,8 @@
 class User < ActiveRecord::Base
 
-  validate :check_username_and_password
-  validates :username, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :username, presence: true, length: { maximum: 20 }, uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }
 
-  def check_username_and_password
-    errors.add(:password, "can't be the same as username") if self.username == self.password
-  end
+  has_secure_password
 
 end
