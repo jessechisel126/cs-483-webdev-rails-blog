@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 	# If user exists and authenticates, log them in
 	# Otherwise re-render new session page
 	if user && user.authenticate(params[:session][:password])
-		log_in(user)
+		login(user)
 		redirect_to user
   	else
   		flash.now[:danger] = 'Invalid username/password combination'
@@ -19,6 +19,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+  	logout
+  	redirect_to '/'
   end
 
 end

@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$white: #FFFFFF;
+
 
 /*
 ** Universal Styling
@@ -8,17 +10,33 @@
 
 
 body {
-  padding-top: 30px;
+    padding-top: 30px;
 }
 
 textarea {
-  resize: vertical;
+    resize: vertical;
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
+h1 {
+    padding-top: 10px;
+}
+
+td {
+    padding-left:   10px;
+    padding-right:  10px;
+    padding-top:    3px;
+    padding-bottom: 3px;
+}
+
+th {
+    padding-left:  10px;
+    padding-right: 10px;
+    border-bottom: 1px solid $gray-light;
+}
 
 /*
 ** Site Logo
@@ -28,12 +46,12 @@ textarea {
 #logo {
     float: left;
     font-size: 150%;
-    color: #FFFFFF;
+    color: $white;
     text-transform: uppercase;
     padding-top: 10px;
     font-weight: bold;
     &:hover {
-        color: #777777;
+        color: $gray-light;
         text-decoration: none;
     }  
 }
@@ -47,11 +65,11 @@ textarea {
 footer {
     margin-top:  50px;
     padding-top: 10px;
-    border-top:  1px solid #EEEEEE;
-    color: #777777;
+    border-top:  1px solid $gray-lighter;
+    color: $gray-light;
     a {
-        color: #555555;
-        &:hover { color: #333333; }
+        color: $gray-dark;
+        &:hover { color: $gray-darker; }
     }
     small {
         float: left;

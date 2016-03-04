@@ -22,8 +22,9 @@ class UsersController < ApplicationController
 
     # Try to save the user, redirect if success, re-render if failure
     if @user.save
+      login @user
       flash.now[:success] = 'Account created!'
-      redirect_to login_path
+      redirect_to @user
     else
       render 'new'
     end
