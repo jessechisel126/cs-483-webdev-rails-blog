@@ -21,7 +21,8 @@ class UsersController < ApplicationController
     # Create the contributor model with our create parameters
     @user = User.new(user_params)
 
-    # if an admin is signing someone else up, make them admin as well
+    # If an admin is signing someone else up, make new user admin as well
+    # Otherwise, it's just another contributor
     if admin?
       @user.type = "Administrator"
     else

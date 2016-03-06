@@ -2,17 +2,21 @@
 
 <%= render 'errors' %>
 
-<%= form_for @user do |f| %>
+<% unless is_logged_in_user? @user %>
+  <p>You don't have permission to view this page!</p>
+<% else %>
+  <%= form_for @user do |f| %>
 
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
 
-  <p>
-    <%= f.submit %>
-  </p>
+    <p>
+      <%= f.submit 'Change Password' %>
+    </p>
 
+  <% end %>
+
+  <%= link_to 'Back', users_path %>
 <% end %>
-
-<%= link_to 'Back', users_path %>

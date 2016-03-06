@@ -28,4 +28,13 @@ module SessionsHelper
       false
     end
   end
+
+  # Returns true if the user argument is the currently logged in user.
+  def is_logged_in_user?(user)
+    if logged_in?
+      current_user.username == user.username
+    else
+      false
+    end
+  end
 end

@@ -1,7 +1,10 @@
 <h1>User Profile for "<%= @user.username %>"</h1>
 
-<p>Password: [ENCRYPTED]</p>
-<p>Type: <%= @user.type %></p>
+<p>Account Type: <%= @user.type %></p>
 
-<%= link_to 'Back', users_path %> | 
-<%= link_to 'Change Password', edit_user_path %>
+<%= link_to 'All Users', users_path %>
+
+<!-- Only display change password link if profile of logged in user -->
+<% if is_logged_in_user? @user %>
+ | <%= link_to 'Change Password', edit_user_path %>
+<% end %>
