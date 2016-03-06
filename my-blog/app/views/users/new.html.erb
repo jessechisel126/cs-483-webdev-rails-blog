@@ -1,4 +1,5 @@
-<h1>Sign Up</h1>
+<!-- Change header based on type of user to sign up -->
+<h1>Sign Up as a<% if admin? %>n Administrator<% else %>Contributor<% end %></h1>
 
 <%= render 'errors' %>
 
@@ -19,3 +20,5 @@
   </p>
 
 <% end %>
+
+<%= link_to 'Login', login_path %>

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.type = "Contributor"
   end
 
   def edit
@@ -17,8 +18,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    # Create the user model with our create parameters
+    # Create the contributor model with our create parameters
     @user = User.new(user_params)
+
+    # if an admin is signing someone else up, make them admin as well
+    if admin?
+      @user.type = "Administrator"
+    else
+      @user.type = "Contributor"
+    end
 
     # Try to save the user, redirect if success, re-render if failure
     if @user.save

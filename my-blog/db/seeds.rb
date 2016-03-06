@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Need to create the parent of all admins, since creating 
+# new admins requires an admin to be currently signed in
+# NOTE: password must be changed after seeding for security
+@user = User.create(username: 'admin', password: 'password', type: 'Administrator')

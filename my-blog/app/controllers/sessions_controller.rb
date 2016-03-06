@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+  	# Log out the current user and redirect to home
   	logout
   	redirect_to '/'
   end
