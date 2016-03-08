@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
   end
@@ -10,7 +9,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.type = "Contributor"
   end
 
   def edit
@@ -32,7 +30,7 @@ class UsersController < ApplicationController
     # Try to save the user, redirect if success, re-render if failure
     if @user.save
       login @user
-      flash.now[:success] = 'Account created!'
+      flash[:success] = 'Account created!'
       redirect_to @user
     else
       render 'new'
@@ -45,7 +43,8 @@ class UsersController < ApplicationController
 
     # Try to update the user, redirect if success, re-render if failure
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      flash[:success] = 'Password updated!'
+      redirect_to @user
     else
       render 'edit'
     end
@@ -56,7 +55,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     # Destroy the user
-    @user.destroy
+    if is_logged_in_user? @user
+      @user.destroy
+    else
+    end
 
     # Redirect to the user index
     redirect_to users_path
@@ -66,5 +68,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password)
     end
-
 end

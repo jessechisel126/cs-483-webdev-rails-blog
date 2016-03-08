@@ -3,7 +3,7 @@
 <%= render 'errors' %>
 
 <% unless is_logged_in_user? @user %>
-  <p>You don't have permission to view this page!</p>
+  <%= render 'noperm' %>
 <% else %>
   <%= form_for @user do |f| %>
 

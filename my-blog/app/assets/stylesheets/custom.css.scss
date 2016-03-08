@@ -22,7 +22,8 @@ body {
 }
 
 textarea {
-    resize: vertical;
+    height: 300px;
+    width:  50%;
 }
 
 .center {
@@ -31,6 +32,12 @@ textarea {
 
 h1 {
     padding-top: 10px;
+    font-size: 3em;
+}
+
+h2 {
+    padding-bottom: 10px;
+    font-size: 1.5em;
 }
 
 td {
@@ -44,6 +51,11 @@ th {
     padding-left:  10px;
     padding-right: 10px;
     border-bottom: 1px solid $gray-light;
+}
+
+// To preserve line breaks in textarea input
+.whitespace {
+    white-space: pre-wrap;
 }
 
 

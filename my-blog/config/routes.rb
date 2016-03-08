@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :users
+  resources :blog_posts do
+    :comments
+  end
 
   # You can have the root of your site routed with "root"
-  root 'sessions#new'
+  root 'blog_posts#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

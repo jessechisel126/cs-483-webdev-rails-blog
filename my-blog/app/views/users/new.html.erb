@@ -1,5 +1,5 @@
 <!-- Change header based on type of user to sign up -->
-<h1>Sign Up as a<% if admin? %>n Administrator<% else %>Contributor<% end %></h1>
+<h1>Sign Up as a<% if admin? %>n Administrator<% else %> Contributor<% end %></h1>
 
 <%= render 'errors' %>
 
@@ -16,7 +16,7 @@
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Sign up' %>
   </p>
 
 <% end %>

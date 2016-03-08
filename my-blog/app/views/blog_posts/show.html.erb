@@ -1,0 +1,12 @@
+<% author = User.find(@post.user_id) %>
+
+<h1><%= @post.title %></h1>
+<h2>by <%= link_to author.username, author %></h2>
+<p class="whitespace"><%= @post.body %></p>
+
+<% if (admin? or is_logged_in_user? author) %>
+  <%= link_to 'Edit Post', edit_blog_post_path(@post) %> | 
+  <%= link_to 'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<!-- COMMENTS WILL EVENTUALLY GO HERE -->

@@ -1,0 +1,28 @@
+<h1>All Blog Posts</h1>
+
+<% if @posts.present? %>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Author</th>
+      <th colspan="<%= admin? ? 2 : 1 %>"></th>
+    </tr>
+    <% @posts.each do |post| %>
+      <% author = User.find(post.user_id) %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= trim_post_body post.body %></td>
+        <td><%= link_to author.username, author %></td>
+        <td><%= link_to 'Full Post', post %></td>
+        <% if admin? %>
+          <td><%= link_to 'Delete', post,
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No blog posts written!</p>
+<% end %>
