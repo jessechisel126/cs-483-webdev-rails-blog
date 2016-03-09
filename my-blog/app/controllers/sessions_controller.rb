@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   	# Otherwise re-render new session page
   	if user && user.authenticate(params[:session][:password])
   		login(user)
-  		redirect_to user
+  		redirect_to root_path
   	else
   		flash.now[:danger] = 'Invalid username/password combination'
   		render 'new'

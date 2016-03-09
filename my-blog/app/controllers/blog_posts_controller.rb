@@ -72,7 +72,7 @@ class BlogPostsController < ApplicationController
     author = User.find(@post.user_id)
 
     # Double check author or admin is logged in
-    if !admin? and !is_logged_in_user? author
+    unless admin? or is_logged_in_user? author
       flash[:danger] = "You aren't an admin or the author!"
       render 'show'
       return # Needed because of "multiple render" error

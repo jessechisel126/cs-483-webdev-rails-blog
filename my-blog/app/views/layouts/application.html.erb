@@ -9,7 +9,9 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <%= flash_messages %>
+      <div class="auto-width-container">
+        <%= flash_messages %>
+      </div>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>

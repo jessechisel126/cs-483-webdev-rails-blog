@@ -1,0 +1,15 @@
+<% commenter = comment.user %>
+<% post = comment.blog_post %>
+<div class="auto-width-container">
+  <div class="panel panel-default auto_width">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= link_to commenter.username, commenter %></h3>
+      <% if admin? or is_logged_in_user? commenter %>
+        <%= link_to 'Delete', blog_post_comment_path(post, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+    <div class="panel-body">
+      <span class="text-area-output"><%= comment.body %></span>
+    </div>
+  </div>
+</div><br>

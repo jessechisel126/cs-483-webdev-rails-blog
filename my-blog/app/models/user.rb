@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   # Uses BCrypt to check that the password matches
   has_secure_password
 
-  has_many :blog_posts
+  has_many :blog_posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
 
 # <rant>

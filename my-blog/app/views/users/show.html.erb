@@ -4,25 +4,8 @@
 
 Blog Posts:
 <% if @user.blog_posts.present? %>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="<%= (is_logged_in_user? @user or admin?) ? 2 : 1 %>"></th>
-    </tr>
-    <% @user.blog_posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= trim_post_body post.body %></td>
-        <td><%= link_to 'Full Post', post %></td>
-        <% if is_logged_in_user? @user or admin? %>
-          <td><%= link_to 'Delete', blog_post_path(post),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
+  <%= render @user.blog_posts %>
 <% else %>
   No blog posts written!
 <% end %>
+<div class="bottom-link"><%= link_to "<- Home", root_path %></div>

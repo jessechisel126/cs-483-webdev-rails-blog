@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def leave
+    @user = User.find(params[:id])
+  end
+
   def create
     # Create the contributor model with our create parameters
     @user = User.new(user_params)
@@ -54,11 +58,15 @@ class UsersController < ApplicationController
     # Find the user model with our destroy parameters
     @user = User.find(params[:id])
 
-    # Destroy the user
-    if is_logged_in_user? @user
-      @user.destroy
-    else
+    # Check author or admin is logged in
+    unless admin? or is_logged_in_user? @user
+      flash[:danger] = "You aren't an admin or the user!"
+      redirect_to users_path
+      return
     end
+
+    # Destroy the user
+    @user.destroy
 
     # Redirect to the user index
     redirect_to users_path

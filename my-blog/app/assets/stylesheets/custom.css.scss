@@ -53,9 +53,26 @@ th {
     border-bottom: 1px solid $gray-light;
 }
 
-// To preserve line breaks in textarea input
-.whitespace {
+// To preserve line breaks in textarea output
+.text-area-output {
     white-space: pre-wrap;
+    word-break: normal;
+}
+
+// Auto width on comment panels
+.auto-width-container {
+    display: inline-block;
+}
+
+// Comment body textarea
+#comment_body {
+    width:  300px;
+    height: 150px;
+    resize: none;
+}
+
+.bottom-link {
+    padding-top: 30px;
 }
 
 
@@ -84,8 +101,9 @@ th {
 
 
 footer {
-    margin-top:  50px;
-    padding-top: 10px;
+    margin-top:    50px;
+    margin-bottom: 50px;
+    padding-top:   10px;
     border-top:  1px solid $gray-lighter;
     color: $gray-light;
     a {
