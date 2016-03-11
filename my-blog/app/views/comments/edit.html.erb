@@ -1,0 +1,6 @@
+<% if admin? or is_logged_in_user? @comment.user %>
+  <h1>Edit Comment</h1>
+  <%= render 'form' %>
+<% else %>
+  <%= render 'noperm' %>
+<% end %>

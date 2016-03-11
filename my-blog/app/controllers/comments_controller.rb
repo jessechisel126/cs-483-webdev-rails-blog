@@ -1,4 +1,10 @@
 class CommentsController < ApplicationController
+
+  def edit
+    @post = BlogPost.find(params[:blog_post_id])
+    @comment = @post.comments.find(params[:id])
+  end
+
   def create
     # Find the post referenced
     @post = BlogPost.find(params[:blog_post_id])
@@ -23,6 +29,29 @@ class CommentsController < ApplicationController
       render @post
       return
     end
+  end
+
+  def update
+    @post = BlogPost.find(params[:blog_post_id])
+    @comment = @post.comments.find(params[:id])
+    author = @comment.user
+
+    # Check author or admin is logged in
+    unless admin? or is_logged_in_user? author
+      flash[:danger] = "You aren't an admin or the author!"
+      redirect_to @post
+      return
+    end
+
+    # Try to save the comment
+    if @comment.update(comment_params)
+      flash[:success] = 'Comment updated!'
+      redirect_to @post
+    else
+      render @post
+      return
+    end
+
   end
 
   def destroy
