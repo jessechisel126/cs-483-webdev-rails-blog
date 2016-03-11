@@ -1,6 +1,8 @@
 Installation Instructions
 -------------------------
 
+NOTE: This project can only be run in Linux.
+
 NOTE: These instructions may be a bit overkill as far as how much is downloaded and installed,
       but it's obviously better to aire on the side of safety and install everything.
       I take no responsibility for the project not running if all instructions aren't followed.
