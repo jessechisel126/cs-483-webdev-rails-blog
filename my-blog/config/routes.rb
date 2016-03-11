@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post    'login'  => 'sessions#create'
   delete  'logout' => 'sessions#destroy'
 
-  get     'users/:id/leave' => 'users#leave'
+  get     'leave' => 'users#leave', as: :leave
+
   resources :users
   resources :blog_posts do
     resources :comments

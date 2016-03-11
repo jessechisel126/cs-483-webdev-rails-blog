@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def leave
-    @user = User.find(params[:id])
   end
 
   def create
@@ -67,6 +66,7 @@ class UsersController < ApplicationController
 
     # Destroy the user
     @user.destroy
+    flash[:success] = 'Account deleted!'
 
     # Redirect to the user index
     redirect_to users_path
